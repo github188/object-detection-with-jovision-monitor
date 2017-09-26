@@ -1,0 +1,32 @@
+Plugin.Window.MousePoint 
+µã»÷ = WaitClick()
+Delay 10
+Hwnd = Plugin.Window.MousePoint()
+GetCursorPos x, y
+sRect = Plugin.Window.GetClientRect(Hwnd)
+MyArray = Split(sRect, "|")
+L = CLng(MyArray(0))
+T = CLng(MyArray(1))
+R = CLng(MyArray(2))
+B = CLng(MyArray(3))
+
+
+µã»÷1 = WaitClick()
+Delay 10
+Hwnd1 = Plugin.Window.MousePoint()
+GetCursorPos x1, y1
+sRect1 = Plugin.Window.GetClientRect(Hwnd1)
+MyArray1 = Split(sRect1, "|")
+L1 = CLng(MyArray1(0))
+T1 = CLng(MyArray1(1))
+R1 = CLng(MyArray1(2))
+B1 = CLng(MyArray1(3))
+
+
+Tick = 2000
+Do
+	Delay Tick
+	Call Plugin.Bkgnd.LeftClick(Hwnd1, x1 - L1, y1 - T1)
+	Delay Tick
+	Call Plugin.Bkgnd.LeftClick(Hwnd, x - L, y - T)
+Loop
